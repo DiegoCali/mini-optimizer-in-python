@@ -1,26 +1,30 @@
+import sys
 from myparser import parser
 
-parser.parse("""
-score = 72;
-bonus = 8;
-attempts = 3;
+with open("code.tac", "w", encoding="utf-8") as file:
+    sys.stdout = file
 
-if (score >= 90 || bonus >= 10 || attempts == 3) {
-    result = score + bonus;
-    print result;
-} else {
-    result = score - bonus;
-    print result;
-}
+    parser.parse("""
+    score = 72;
+    bonus = 8;
+    attempts = 3;
 
-while (attempts > 0) {
-    attempts = attempts - 1;
-    if (attempts == 1 || score > 70) {
-        print score;
+    if (score >= 90 || bonus >= 10 || attempts == 3) {
+        result = score + bonus;
+        print result;
+    } else {
+        result = score - bonus;
+        print result;
     }
-}
 
-if (score > 100 || bonus > 100 || attempts == 0) {
-    print true;
-}
-""")
+    while (attempts > 0) {
+        attempts = attempts - 1;
+        if (attempts == 1 || score > 70) {
+            print score;
+        }
+    }
+
+    if (score > 100 || bonus > 100 || attempts == 0) {
+        print true;
+    }
+    """)
